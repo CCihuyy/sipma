@@ -1,0 +1,5 @@
+{
+  "name": "Student Attendance DB Schema",
+  "description": "MySQL schema for a student attendance system",
+  "requestFramePermissions": []
+}
