@@ -1,0 +1,10 @@
+server/
+server/**
+debug-*.ts
+*.ps1
+.env
+.env.*
+node_modules/
+dist/
+server/uploads/
+server/migrations/
