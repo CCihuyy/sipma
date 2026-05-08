@@ -1,4 +1,3 @@
--- Create table to store named location points
 CREATE TABLE IF NOT EXISTS location_points (
   id INT AUTO_INCREMENT PRIMARY KEY,
   latitude DECIMAL(10, 8) NOT NULL,

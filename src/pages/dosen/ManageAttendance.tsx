@@ -93,8 +93,6 @@ export const ManageAttendance = () => {
       setAllSessions([]);
       return;
     }
-          <PageHeader title="Kelola Absensi" subtitle="Buka sesi dan catat kehadiran mahasiswa secara real-time" icon={CheckSquare} />
-    
     setLoading(true);
     setError(null);
     api
@@ -186,36 +184,37 @@ export const ManageAttendance = () => {
   return (
     <div className="min-h-screen">
       <div className="p-6">
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h1 className="text-3xl font-bold text-zinc-900">Kelola Absensi</h1>
-            <p className="text-sm text-zinc-500 mt-2">
-              Login as: <span className="font-medium text-zinc-700">{auth?.user?.email}</span> (ID: {auth?.user?.id})
-            </p>
+          <PageHeader title="Kelola Absensi" subtitle="Buka sesi dan catat kehadiran mahasiswa secara real-time" icon={CheckSquare} />
+
+          <div className="flex justify-between items-center mb-6">
+            <div>
+              <p className="text-sm text-zinc-500 mt-2">
+                Login as: <span className="font-medium text-zinc-700">{auth?.user?.email}</span> (ID: {auth?.user?.id})
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowUpcomingOnly(true)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  showUpcomingOnly
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
+                }`}
+              >
+                Mendatang ({sessions.length})
+              </button>
+              <button
+                onClick={() => setShowUpcomingOnly(false)}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                  !showUpcomingOnly
+                    ? 'bg-indigo-600 text-white'
+                    : 'bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
+                }`}
+              >
+                Semua ({allSessions.length})
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setShowUpcomingOnly(true)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                showUpcomingOnly
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
-              }`}
-            >
-              Mendatang ({sessions.length})
-            </button>
-            <button
-              onClick={() => setShowUpcomingOnly(false)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                !showUpcomingOnly
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
-              }`}
-            >
-              Semua ({allSessions.length})
-            </button>
-          </div>
-        </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="bg-white rounded-xl border border-zinc-200 p-4">

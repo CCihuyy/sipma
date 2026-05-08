@@ -1,11 +1,5 @@
 import db from '../config/db.js';
 
-/**
- * Auto-mark alfa for all sessions that have ended and haven't been processed yet
- * This function checks all jadwal entries where:
- * 1. The session end time has passed
- * 2. Mahasiswa in that class haven't submitted attendance
- */
 export const autoMarkAlfa = async () => {
   try {
     const now = new Date();
