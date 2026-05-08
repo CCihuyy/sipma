@@ -414,16 +414,15 @@ export const submitAttendance = async (req: Request, res: Response) => {
     let finalStatus = status;
     
     if (status === 'Hadir' && session.opened_at && hasKontrakKuliah) {
-      // Parse the opened_at timestamp to get minutes from start of day
+      // Parse the opened_at timestamp and calculate minutes passed since session was opened
       const sessionOpenedDate = new Date(session.opened_at);
-      const sessionOpenedHour = sessionOpenedDate.getHours();
-      const sessionOpenedMinute = sessionOpenedDate.getMinutes();
-      const sessionOpenedTime = sessionOpenedHour * 60 + sessionOpenedMinute;
+      const nowDate = new Date();
       
-      // Calculate minutes passed since session was opened
-      const minutesPassedSinceOpen = currentTime - sessionOpenedTime;
+      // Calculate difference in milliseconds and convert to minutes
+      const timeDiffMs = nowDate.getTime() - sessionOpenedDate.getTime();
+      const minutesPassedSinceOpen = Math.floor(timeDiffMs / (1000 * 60));
       
-      console.log(`[PRESENSI] opened_at=${session.opened_at}, minutesPassedSinceOpen=${minutesPassedSinceOpen}`);
+      console.log(`[PRESENSI] opened_at=${session.opened_at}, now=${nowDate.toISOString()}, minutesPassedSinceOpen=${minutesPassedSinceOpen}`);
       
       if (minutesPassedSinceOpen > batasKeterlambatan) {
         isLate = 1;

@@ -92,11 +92,9 @@ export const MahasiswaDashboard = () => {
           const counts = { hadir: 0, terlambat: 0, izin: 0, sakit: 0, alpa: 0 };
           res.data.forEach((r: any) => {
             if (r.status === 'Hadir') {
-              if (r.is_late === 1) {
-                counts.terlambat++;
-              } else {
-                counts.hadir++;
-              }
+              counts.hadir++;
+            } else if (r.status === 'Terlambat') {
+              counts.terlambat++;
             } else if (r.status === 'Izin') {
               counts.izin++;
             } else if (r.status === 'Sakit') {
