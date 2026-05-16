@@ -1,1 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap');
 @import "tailwindcss";
+
+/* Academic / aesthetic heading font utility */
+.font-academic {
+	font-family: 'Merriweather', Georgia, serif;
+}
+
+.sipma-word {
+	letter-spacing: -0.035em;
+	text-shadow: 0 6px 16px rgba(15, 23, 42, 0.16);
+}
+
+.sipma-i {
+	position: relative;
+	display: inline-block;
+	margin-inline: 0.04em;
+	line-height: 1;
+}
+
+.sipma-hat {
+	position: absolute;
+	left: 50%;
+	top: -0.28em;
+	width: 0.92em;
+	height: 0.42em;
+	transform: translateX(-52%);
+	pointer-events: none;
+}
+
+.sipma-hat::before {
+	content: '';
+	position: absolute;
+	left: 0.05em;
+	top: 0;
+	width: 0.8em;
+	height: 0.24em;
+	background: linear-gradient(145deg, #1f2937 0%, #111827 62%, #0b1220 100%);
+	clip-path: polygon(50% 0%, 100% 46%, 50% 100%, 0% 56%);
+	transform: rotate(-13deg);
+	box-shadow: 0 0.05em 0 rgba(15, 23, 42, 0.32);
+}
+
+.sipma-hat::after {
+	content: '';
+	position: absolute;
+	left: 0.35em;
+	top: 0.15em;
+	width: 0.2em;
+	height: 0.13em;
+	background: #111827;
+	border-radius: 40% 40% 60% 60%;
+	transform: rotate(-10deg);
+}
+
+.sipma-hat-band {
+	position: absolute;
+	left: 0.46em;
+	top: -0.2em;
+	width: 0.02em;
+	height: 0.31em;
+	background: #f59e0b;
+	border-radius: 999px;
+	transform: rotate(12deg);
+	transform-origin: top center;
+	pointer-events: none;
+}
+
+.sipma-hat-band::before {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 0;
+	width: 0.045em;
+	height: 0.045em;
+	transform: translateX(-50%);
+	background: #f59e0b;
+	border-radius: 999px;
+}
+
+.sipma-hat-band::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: -0.02em;
+	width: 0.06em;
+	height: 0.06em;
+	transform: translateX(-50%);
+	background: #fbbf24;
+	border-radius: 999px;
+}
+
+.sipma-i::after {
+	content: none;
+}
+
+.login-blob {
+	position: absolute;
+	filter: blur(36px);
+	opacity: 0.55;
+	border-radius: 9999px;
+	animation: loginFloat 10s ease-in-out infinite;
+}
+
+.login-blob-left {
+	width: 18rem;
+	height: 18rem;
+	left: -4rem;
+	top: -2rem;
+	background: radial-gradient(circle at 30% 30%, #93c5fd 0%, #dbeafe 45%, transparent 70%);
+}
+
+.login-blob-right {
+	width: 20rem;
+	height: 20rem;
+	right: -5rem;
+	bottom: -6rem;
+	background: radial-gradient(circle at 70% 70%, #c4b5fd 0%, #e9d5ff 45%, transparent 70%);
+	animation-delay: 2.2s;
+}
+
+.login-fade-in {
+	animation: loginFadeUp 0.7s ease-out both;
+}
+
+.login-fade-in-delay {
+	animation-delay: 0.12s;
+}
+
+@keyframes loginFloat {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes loginFadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

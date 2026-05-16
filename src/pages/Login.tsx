@@ -59,10 +59,28 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-zinc-100">
+    <div className="relative min-h-screen overflow-hidden bg-slate-100 flex flex-col items-center justify-center p-4 md:p-6">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="login-blob login-blob-left" />
+        <div className="login-blob login-blob-right" />
+      </div>
+
+      <div className="relative z-10 text-center mb-7 md:mb-8 login-fade-in">
+        <h2 className="text-6xl md:text-8xl font-black text-slate-800 font-academic sipma-word" aria-label="SIPMA">
+          <span>S</span>
+          <span className="sipma-i">
+            <span className="sipma-hat" aria-hidden="true" />
+            <span className="sipma-hat-band" aria-hidden="true" />
+            I
+          </span>
+          <span>PMA</span>
+        </h2>
+        <p className="text-base md:text-lg text-slate-600 mt-2 tracking-wide">Sistem Presensi Mahasiswa</p>
+      </div>
+
+      <div className="relative z-10 max-w-md w-full rounded-3xl shadow-2xl p-8 border border-white/70 bg-white/85 backdrop-blur-sm login-fade-in login-fade-in-delay">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-slate-100 text-slate-700 rounded-xl flex items-center justify-center mx-auto mb-4 border border-slate-200">
             <LogIn className="w-6 h-6" />
           </div>
           <h1 className="text-2xl font-bold text-zinc-900">Welcome Back</h1>

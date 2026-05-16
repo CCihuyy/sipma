@@ -242,11 +242,8 @@ export const toggleSession = async (req: Request, res: Response) => {
       });
     }
     
-    // Toggle session
     const newVal = current.is_open ? 0 : 1;
     
-    // If opening, set opened_at to current timestamp.
-    // If closing, keep opened_at so we still know this session was opened.
     if (newVal === 1) {
       await db.query(
         'UPDATE jadwal SET is_open = ?, opened_at = NOW() WHERE id = ?',
@@ -332,9 +329,6 @@ export const submitAttendance = async (req: Request, res: Response) => {
     if (isSessionEnded) {
       return res.status(400).json({ message: 'Attendance session has ended. You can no longer submit attendance.' });
     }
-
-    // ⭐ MAHASISWA ONLY: Check if current time has reached scheduled start time
-    // Students can only submit attendance AFTER or AT the scheduled start time
     const [jamMulaiHour, jamMulaiMinute] = (session.jam_mulai || '').split(':').map(Number);
     const scheduledStartTime = jamMulaiHour * 60 + jamMulaiMinute;
     
